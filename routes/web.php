@@ -29,4 +29,8 @@ Route::post('/login', [LoginController::class, 'login']);
 
 Route::get('captcha/{config?}', '\Mews\Captcha\CaptchaController@getCaptcha');
 
+Route::get('dashboard', function () {
+    return view('outerTheme.pages.dashboard');
+})->name('dashboard')->middleware('auth');
+
 /* Frontend URL End */

@@ -16,16 +16,14 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div class="mb-3 mt-3">
-                <input type="email" class="form-control input-form-custom" id="email" placeholder="Enter user name"
-                    name="email">
+                <input type="username" class="form-control input-form-custom" id="username" placeholder="Enter user name" name="username">
             </div>
             <div class="mb-3">
-                <input type="password" class="form-control input-form-custom" id="pwd" placeholder="Enter password"
-                    name="pswd">
+                <input type="password" class="form-control input-form-custom" id="pass" placeholder="Enter password" name="pass">
             </div>
             <div class="form-group">
                 <label for="captcha">Captcha</label>
-                <div>
+                <div class="mb-3 mt-3">
                     <img src="{{ captcha_src('flat') }}" id="captcha-img" alt="captcha">
                     <button type="button" class="btn btn-sm btn-secondary" id="reload">
                         ↻ Reload
@@ -45,8 +43,8 @@
                 <button type="submit" class="admin-login-btn btn-block custom-btn-rounded">Submit</button>
             </div>
             <div class="clearfix">
-                <div class="float-start"><a href="#" class="admin-signin-link">Sign in with your OTP</a></div>
-                <div class="float-end"><a href="#" class="admin-forgot-link">Forgot Password ?</a></div>
+                <div class="float-start"><a href="hrms-login" class="admin-signin-link">HRMS Login</a></div>
+                <div class="float-end"><a href="forgot-password" class="admin-forgot-link">Forgot Password ?</a></div>
             </div>
         </form>    
     </div>
@@ -55,12 +53,9 @@
 
 @section('scripts')
 <script type="text/javascript">
-    $(document).ready(function() {
-        console.log("jQuery is working!");
-    });
-    // document.getElementById('reload').addEventListener('click', function () { alert('jjjj');
-    //     document.getElementById('captcha-img').src = '{{ captcha_src('flat') }}' + '?' + Date.now();
-    // });    
+    document.getElementById('reload').addEventListener('click', function () {
+        document.getElementById('captcha-img').src = '{{ captcha_src('flat') }}' + '?' + Date.now();
+    });    
 
 </script>
 @endsection
